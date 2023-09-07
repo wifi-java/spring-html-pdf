@@ -22,7 +22,17 @@ public class SampleService {
           throws DocumentException, IOException {
     PdfGenerator pdfGenerator = new PdfGenerator();
     String html = pdfGenerator.parseHtmlFileToString(templateName, map);
-    pdfGenerator.generateFromHtml(outputStream, html);
+    pdfGenerator.generateFromHtml(outputStream, html, null);
+  }
+
+  /**
+   * 비밀번호 설정을 한 pdf 생성.
+   */
+  public void generateEncryptionPdfFromHtml(String templateName, Map<String, Object> map, String password, OutputStream outputStream)
+          throws DocumentException, IOException {
+    PdfGenerator pdfGenerator = new PdfGenerator();
+    String html = pdfGenerator.parseHtmlFileToString(templateName, map);
+    pdfGenerator.generateFromHtml(outputStream, html, password);
   }
 
   /**
@@ -33,6 +43,16 @@ public class SampleService {
           throws DocumentException, IOException {
     PdfGenerator pdfGenerator = new PdfGenerator();
     String html = pdfGenerator.parseHtmlFileToString(templateName, map);
-    pdfGenerator.generateFromHtml(path, html);
+    pdfGenerator.generateFromHtml(path, html, null);
+  }
+
+  /**
+   * 비밀번호 설정을 한 pdf 생성.
+   */
+  public void generateEncryptionPdfFromHtml(String templateName, Map<String, Object> map, String password, String path)
+          throws DocumentException, IOException {
+    PdfGenerator pdfGenerator = new PdfGenerator();
+    String html = pdfGenerator.parseHtmlFileToString(templateName, map);
+    pdfGenerator.generateFromHtml(path, html, password);
   }
 }

@@ -32,6 +32,7 @@ public class SampleController {
 
       OutputStream outputStream = response.getOutputStream();
       sampleService.generatePdfFromHtml("sample", map, outputStream);
+      //sampleService.generateEncryptionPdfFromHtml("sample", map, "1234", outputStream);
     } catch (Exception e) {
       log.error("downloadPDF", e);
       response.setHeader("Content-disposition", "");
